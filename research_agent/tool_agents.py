@@ -12,7 +12,7 @@ class WebSearchTool:
     def _get_ddgs(self):
         if self._ddgs is None:
             try:
-                from duckduckgo_search import DDGS
+                from ddgs import DDGS
                 self._ddgs = DDGS()
             except ImportError:
                 print("       [WARN] duckduckgo_search not installed. Install with: pip install duckduckgo_search")
@@ -22,7 +22,7 @@ class WebSearchTool:
     def search(self, query, max_results=5):
         ddgs = self._get_ddgs()
         if ddgs is None:
-            return f"[WebSearch unavailable — duckduckgo_search not installed]"
+            return f"[WebSearch unavailable -- duckduckgo_search not installed]"
 
         try:
             results = list(ddgs.text(query, max_results=max_results))
@@ -63,7 +63,7 @@ class CodeExecTool:
         result = output.getvalue()
         if error:
             return f"[Execution Output]\n{result}\n[Error]\n{error}"
-        return f"[Execution Output]\n{result}" if result else "[Code executed — no output]"
+        return f"[Execution Output]\n{result}" if result else "[Code executed -- no output]"
 
 
 class FileTool:
@@ -112,7 +112,7 @@ class FileTool:
         context_parts.append("")
         context_parts.append("### Sub-Tasks")
         for t in plan.get("sub_tasks", []):
-            status_icon = "✓" if t["status"] == "completed" else "○"
+            status_icon = "OK" if t["status"] == "completed" else "O"
             context_parts.append(f"- {status_icon} #{t['id']} [{t['tool']}] {t['question'][:100]}")
 
         context_parts.append("")

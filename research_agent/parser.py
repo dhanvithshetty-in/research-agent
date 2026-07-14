@@ -2,7 +2,7 @@ import os
 
 # Parsing layer: strip document formatting down to raw text
 # Supported: PDF (pdfplumber + OCR fallback), DOCX (python-docx), plain TXT
-# OCR uses pytesseract — requires Tesseract system binary (https://github.com/UB-Mannheim/tesseract/wiki)
+# OCR uses pytesseract -- requires Tesseract system binary (https://github.com/UB-Mannheim/tesseract/wiki)
 
 
 def load_document_layer(filepath):

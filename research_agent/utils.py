@@ -32,7 +32,7 @@ def print_summary(rows):
     print(f"\n{header}")
     print(sep)
     for row in rows[:10]:
-        skills = row["detected_skills"][:40] if row["detected_skills"] else "—"
+        skills = row["detected_skills"][:40] if row["detected_skills"] else "--"
         exp = str(row["experience_years"]) if row["experience_years"] is not None else "?"
         print(
             f"{row['rank']:<6} {row['candidate'][:34]:<35} "
@@ -70,4 +70,4 @@ class ProgressTracker:
         sys.stdout.write(msg.encode("utf-8", errors="replace").decode("cp1252", errors="replace"))
         sys.stdout.flush()
         if self.count >= self.total:
-            print(f" — {elapsed:.1f}s")
+            print(f" -- {elapsed:.1f}s")

@@ -7,7 +7,7 @@ You are a senior research scientist conducting a literature review and analysis.
 - Provide thorough, technically accurate responses
 - Cite specific details, numbers, and benchmarks where relevant
 - Use clear section headers and structured formatting
-- Be precise about claims — distinguish between established facts and speculative trends
+- Be precise about claims -- distinguish between established facts and speculative trends
 """
 
 PLAN_PROMPT = """
@@ -43,7 +43,7 @@ Synthesize them into a well-structured markdown report with:
 5. Sources section at the end
 
 Be precise and technical. Avoid filler.
-Respond ONLY with the markdown report content — no extra commentary.
+Respond ONLY with the markdown report content -- no extra commentary.
 """
 
 REVIEW_PROMPT = """

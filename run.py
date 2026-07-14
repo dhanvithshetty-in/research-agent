@@ -7,7 +7,7 @@ import shutil
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(
-        description="Autonomous Research Agent — file-centric state architecture"
+        description="Autonomous Research Agent -- file-centric state architecture"
     )
     parser.add_argument(
         "query", nargs="*",
@@ -52,7 +52,7 @@ def main(argv=None):
 
     # Print header
     print("=" * 60)
-    print("  Autonomous Research Agent — File-Centric State")
+    print("  Autonomous Research Agent -- File-Centric State")
     print("=" * 60)
     print(f"  Workspace : {workspace_dir}")
     print(f"  Model     : {args.model}")
@@ -94,13 +94,13 @@ def main(argv=None):
                 context = file_tool.build_thinking_context(plan)
 
                 if task["tool"] in ("web_search", "both"):
-                    print(f"       → Searching web...")
+                    print(f"       >> Searching web...")
                     search_result = web.search(task["question"])
                     file_tool.save_finding(task["id"],
                         f"## Web Search Results\n\n{search_result}")
 
                 if task["tool"] in ("code_exec", "both"):
-                    print(f"       → Executing code analysis...")
+                    print(f"       >> Executing code analysis...")
                     code_prompt = f"""
 Generate Python code to research this question:
 {task['question']}
@@ -108,7 +108,7 @@ Generate Python code to research this question:
 Context from previous findings:
 {context[:2000]}
 
-Output ONLY executable Python code — no explanation, no markdown formatting.
+Output ONLY executable Python code -- no explanation, no markdown formatting.
 Use print() to show results."""
                     code_text = llm.generate_text(
                         "You are a Python code generator. Output ONLY executable code.",
@@ -122,7 +122,7 @@ Use print() to show results."""
                         f"{existing}\n\n## Code Execution\n\n```\n{code_result}\n```")
 
                 if task["tool"] == "reasoning":
-                    print(f"       → Reasoning directly...")
+                    print(f"       >> Reasoning directly...")
                     reasoning_prompt = f"""Answer this research question directly based on your knowledge:
 {task['question']}
 
