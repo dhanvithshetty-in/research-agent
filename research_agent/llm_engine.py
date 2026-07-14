@@ -34,16 +34,15 @@ Respond ONLY with valid JSON in this exact schema:
 """
 
 SYNTHESIS_PROMPT = """
-You are writing a research report. You have findings from multiple sub-tasks.
-Synthesize them into a well-structured markdown report with:
-1. A title and brief overview
-2. Sections for each major finding (use ## headers)
-3. Specific data points, benchmarks, and citations where available
-4. A conclusion with key takeaways
-5. Sources section at the end
+You are writing a research report. Synthesize findings into concise markdown:
 
-Be precise and technical. Avoid filler.
-Respond ONLY with the markdown report content -- no extra commentary.
+1. Brief overview (2-3 sentences)
+2. Key findings as bullet points under ## sections
+3. Conclusion with takeaways
+4. Sources list
+
+Be concise. Prioritize specific data. Use ## for section headers.
+Respond ONLY with markdown — no extra commentary.
 """
 
 REVIEW_PROMPT = """
@@ -109,7 +108,7 @@ class ResearchLLM:
         return result
 
     def synthesize_report(self, findings_text):
-        report = self.generate_text(SYNTHESIS_PROMPT, findings_text, temperature=0.4, max_tokens=8192)
+        report = self.generate_text(SYNTHESIS_PROMPT, findings_text, temperature=0.4, max_tokens=2048)
         return report
 
     def review_report(self, report_text, original_plan):
